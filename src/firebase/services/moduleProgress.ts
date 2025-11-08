@@ -4,8 +4,6 @@ import {
   setDoc,
   updateDoc,
   collection,
-  query,
-  where,
   getDocs,
   increment
 } from 'firebase/firestore';
@@ -357,7 +355,7 @@ function calculatePercentage(sectionProgress: { [key: number]: SectionProgress }
 }
 
 // Get user's overall module statistics
-export async function getUserModuleStats(userId: string): Promise<{
+export async function getUserModuleStats(_userId: string): Promise<{
   modulesStarted: number;
   modulesCompleted: number;
   totalScore: number;
@@ -384,7 +382,7 @@ export async function canAccessModule(
   if (moduleOrder === 1) return true; // First module always accessible
   
   // Get all module progress for this course
-  const courseProgress = await getUserCourseModuleProgress(userId, courseId);
+  await getUserCourseModuleProgress(userId, courseId);
   
   // Check if previous module is completed
   // This would require getting module info to check order
