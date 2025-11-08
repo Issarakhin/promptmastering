@@ -1,4 +1,3 @@
-
 export interface LabEvaluationResult {
   score: number; // 0-100
   passed: boolean;
@@ -19,7 +18,7 @@ export interface LabEvaluationResult {
 export async function evaluateLabSubmission(
   submission: string,
   expectedKeywords: string[],
-  labPrompt: string,
+  _labPrompt: string,
   passingScore: number = 70
 ): Promise<LabEvaluationResult> {
   
@@ -254,4 +253,3 @@ Make sure to:
 - Explain your reasoning
 - Use clear and concise language
 - Demonstrate understanding of the concept`;
-}
