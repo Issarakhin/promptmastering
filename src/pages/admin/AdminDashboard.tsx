@@ -81,7 +81,7 @@ export default function AdminDashboard() {
       <div className="container mx-auto px-4 py-8">
         {/* Welcome Section */}
         <div className="mb-8">
-          <h2 className="text-3xl font-bold mb-2">Welcome, Admin {user?.displayName}!</h2>
+          <h2 className="text-3xl font-bold mb-2">Welcome, Admin {currentUser?.displayName}!</h2>
           <p className="text-gray-400">Manage your learning platform from here</p>
         </div>
 
