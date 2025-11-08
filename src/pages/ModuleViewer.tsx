@@ -42,7 +42,7 @@ export default function ModuleViewer() {
   const [labResult, setLabResult] = useState<any>(null);
   
   // Video state
-  const [videoWatchTime, setVideoWatchTime] = useState(0);
+  const [_videoWatchTime, setVideoWatchTime] = useState(0);
 
   useEffect(() => {
     if (moduleId && currentUser) {
