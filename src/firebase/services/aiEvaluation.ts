@@ -1,5 +1,3 @@
-// AI Lab Evaluation Service
-// This service evaluates user lab submissions using AI
 
 export interface LabEvaluationResult {
   score: number; // 0-100
@@ -130,9 +128,9 @@ function calculateSpecificity(text: string): number {
  */
 function generateFeedback(
   score: number,
-  keywordMatches: number,
-  totalKeywords: number,
-  textLength: number
+  _keywordMatches: number,
+  _totalKeywords: number,
+  _textLength: number
 ): string {
   if (score >= 90) {
     return 'Excellent work! Your submission demonstrates a strong understanding of the concept and includes all key elements. Your explanation is clear, specific, and well-structured.';
@@ -247,7 +245,7 @@ export async function evaluateLabWithAI(
 /**
  * Get sample good answer for reference (for hints)
  */
-export function generateSampleAnswer(labPrompt: string, expectedKeywords: string[]): string {
+export function generateSampleAnswer(_labPrompt: string, expectedKeywords: string[]): string {
   return `A good answer should include these key concepts: ${expectedKeywords.join(', ')}. 
   
 Make sure to:
