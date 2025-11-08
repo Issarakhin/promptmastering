@@ -125,7 +125,7 @@ export async function deleteModule(moduleId: string): Promise<void> {
 }
 
 // Get module statistics
-export async function getModuleStats(moduleId: string): Promise<{
+export async function getModuleStats(courseId: string, moduleId: string): Promise<{
   totalSections: number;
   videoCount: number;
   textCount: number;
@@ -133,7 +133,7 @@ export async function getModuleStats(moduleId: string): Promise<{
   labCount: number;
   totalPoints: number;
 }> {
-  const module = await getModule(moduleId);
+  const module = await getModule(courseId, moduleId);
   
   if (!module) {
     return {
