@@ -9,7 +9,7 @@ import { getUserBadges } from '../firebase/services/badges';
 import { Brain, BookOpen, Trophy, Target, TrendingUp, LogOut } from 'lucide-react';
 
 export default function Dashboard() {
-  const { currentUser, userData, logout } = useAuth();
+  const { currentUser, logout } = useAuth();
   const [courses, setCourses] = useState<any[]>([]);
   const [enrolledCourses, setEnrolledCourses] = useState<any[]>([]);
   const [stats, setStats] = useState({ 
