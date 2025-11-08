@@ -42,7 +42,7 @@ export default function ModuleViewer() {
   const [labResult, setLabResult] = useState<any>(null);
   
   // Video state
-  const [videoWatchTime] = useState(0);
+  const [videoWatchTime, setVideoWatchTime] = useState(0);
 
   useEffect(() => {
     if (moduleId && currentUser) {
@@ -279,7 +279,7 @@ export default function ModuleViewer() {
                       onLoad={() => {
                         // Simulate video progress tracking
                         const interval = setInterval(() => {
-                          setVideoWatchTime(prev => {
+                          setVideoWatchTime((prev: number) => {
                             const newTime = prev + 1;
                             if (newTime % 10 === 0) { // Update every 10 seconds
                               handleVideoProgress(newTime);
