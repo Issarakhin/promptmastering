@@ -6,7 +6,6 @@ import { submitAssessment, getAllAssessments, getUserAssessmentResults } from '.
 
 export default function Assessment() {
   const { currentUser, logout } = useAuth();
-  const navigate = useNavigate();
   const [assessments, setAssessments] = useState<any[]>([]);
   const [selectedAssessment, setSelectedAssessment] = useState<any>(null);
   const [currentQuestion, setCurrentQuestion] = useState(0);
