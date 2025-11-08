@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { Brain, Trophy, Medal, Award, LogOut } from 'lucide-react';
+import { Brain, Trophy, Medal, LogOut } from 'lucide-react';
 
 export default function Leaderboard() {
   const { logout } = useAuth();
