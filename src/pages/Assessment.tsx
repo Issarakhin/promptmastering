@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { collection, getDocs, query, where } from 'firebase/firestore';
-import { db } from '../firebase/config';
 import { Brain, CheckCircle, XCircle, Clock, Trophy, LogOut } from 'lucide-react';
 import { submitAssessment, getAllAssessments, getUserAssessmentResults } from '../firebase/services/assessments';
 

@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase/config';
-import { Brain, User, Award, BookOpen, Target, LogOut, Mail, Trophy, TrendingUp } from 'lucide-react';
+import { Brain, Award, BookOpen, Target, LogOut, Mail, Trophy } from 'lucide-react';
 import { getUserBadges, getBadgeProgress } from '../firebase/services/badges';
 import { getEnrolledCourses } from '../firebase/services/userProgress';
 import { getAssessmentStats } from '../firebase/services/assessments';
 
 export default function Profile() {
-  const { currentUser, userData, logout } = useAuth();
+  const { currentUser, logout } = useAuth();
   const [stats, setStats] = useState({
     totalPoints: 0,
     level: 1,

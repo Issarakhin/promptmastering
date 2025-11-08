@@ -3,7 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { Brain, Play, CheckCircle, BookOpen, FlaskConical, ArrowLeft, ArrowRight, LogOut, Loader } from 'lucide-react';
 import { getModule } from '../firebase/services/modules';
-import type { Module, ModuleSection } from '../firebase/services/modules';
+import type { Module } from '../firebase/services/modules';
 import { 
   getModuleProgress, 
   startModule, 
@@ -42,7 +42,7 @@ export default function ModuleViewer() {
   const [labResult, setLabResult] = useState<any>(null);
   
   // Video state
-  const [videoWatchTime, setVideoWatchTime] = useState(0);
+  const [videoWatchTime] = useState(0);
 
   useEffect(() => {
     if (moduleId && currentUser) {

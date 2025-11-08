@@ -1,15 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { doc, getDoc, collection, query, where, getDocs } from 'firebase/firestore';
+import { doc, getDoc, collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase/config';
 import { Brain, Clock, BookOpen, Target, ArrowLeft, LogOut, CheckCircle, PlayCircle } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import {
   enrollInCourse,
   isEnrolled,
-  getCourseProgress,
-  completeLesson,
-  completeCourse
+  getCourseProgress
 } from '../firebase/services/userProgress';
 
 export default function CourseDetail() {
@@ -56,12 +54,12 @@ export default function CourseDetail() {
         });
         console.log('📚 Total module data:', modulesData.length);
         
-        modulesData.sort((a, b) => a.order - b.order);
+        modulesData.sort((a: any, b: any) => (a.order || 0) - (b.order || 0));
         setModules(modulesData);
         console.log('✅ Modules set to state:', modulesData.length);
-      } catch (error) {
+      } catch (error: any) {
         console.error('❌ Error loading modules:', error);
-        console.error('❌ Error message:', error.message);
+        console.error('❌ Error message:', error?.message);
       }
 
       // Check enrollment and load progress
@@ -93,29 +91,6 @@ export default function CourseDetail() {
       alert('Failed to enroll in course');
     } finally {
       setEnrolling(false);
-    }
-  };
-
-  const handleCompleteLesson = async (lessonId: string) => {
-    if (!currentUser || !id) return;
-
-    try {
-      await completeLesson(currentUser.uid, id, lessonId, 30); // 30 minutes default
-      
-      // Recalculate progress
-      const completedCount = (progress?.completedLessons.length || 0) + 1;
-      const totalLessons = modules.length;
-      const newPercentage = Math.round((completedCount / totalLessons) * 100);
-
-      // If all lessons completed, mark course as complete
-      if (newPercentage >= 100) {
-        await completeCourse(currentUser.uid, id);
-      }
-
-      // Reload progress
-      await loadCourseData();
-    } catch (error) {
-      console.error('Error completing lesson:', error);
     }
   };
 

@@ -6,7 +6,7 @@ import { db } from '../../firebase/config';
 import { Brain, Users, BookOpen, FileText, Award, TrendingUp, LogOut } from 'lucide-react';
 
 export default function AdminDashboard() {
-  const { user, logout } = useAuth();
+  const { currentUser, logout } = useAuth();
   const [stats, setStats] = useState({
     totalUsers: 0,
     totalCourses: 0,
